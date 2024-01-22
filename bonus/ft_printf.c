@@ -139,3 +139,10 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (str_counter);
 }
+
+int	main(void)
+{
+	printf("\nft_printf return value: %d", ft_printf(" %d ", -1));
+	printf("\n");
+	printf("\nprintf return value: %d", printf(" %d ", -1));
+}
