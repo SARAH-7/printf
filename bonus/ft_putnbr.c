@@ -6,18 +6,16 @@
 /*   By: sbakhit <sbakhit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:09:07 by sbakhit           #+#    #+#             */
-/*   Updated: 2024/01/22 18:52:52 by sbakhit          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:16:19 by sbakhit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(long long n, int counter, t_spec *result)
+int	ft_putnbr(int n, int counter, t_spec *result)
 {
-	int		padding_len;
 	char	*num_save;
 
-	padding_len = 0;
 	num_save = ft_itoa(n);
 	if (n < 0)
 	{
@@ -32,15 +30,13 @@ int	ft_putnbr(long long n, int counter, t_spec *result)
 	}
 	if (result && result->flag_zero == 1)
 	{
-		padding_len = result->width - ft_strlen(num_save);
-		while (padding_len-- > 0)
+		result->width -= ft_strlen(num_save);
+		while (result->width-- > 0)
 			counter += ft_putchar('0');
 		result->flag_zero = 0;
 	}
-	if (result && result->flag_precision == 1 && n != 0)
+	if (result && result->flag_precision == 1)
 	{
-		if ((long)n == LONG_MAX)
-			printf("hi");
 		if (n < 0)
 		{
 			n *= -1;
@@ -48,19 +44,12 @@ int	ft_putnbr(long long n, int counter, t_spec *result)
 			num_save = ft_itoa(n);
 		}
 		if (n <= 2147483647)
-			padding_len = result->width - ft_strlen(num_save);
+			result->width -= ft_strlen(num_save);
 		else
-			padding_len = 0;
-		while (padding_len-- > 0)
+			result->width = 0;
+		while (result->width-- > 0)
 			counter += ft_putchar('0');
 		result->flag_precision = 0;
-	}
-	if (result && result->flag_blank == 1)
-	{
-		padding_len = result->width - ft_strlen(num_save);
-		while (padding_len-- > 0)
-			counter += ft_putchar(' ');
-		result->flag_blank = 0;
 	}
 	if (result && result->flag_space == 1)
 	{

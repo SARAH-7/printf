@@ -6,39 +6,31 @@
 /*   By: sbakhit <sbakhit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:19:19 by sbakhit           #+#    #+#             */
-/*   Updated: 2024/01/22 19:34:36 by sbakhit          ###   ########.fr       */
+/*   Updated: 2024/01/25 22:43:57 by sbakhit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_hex_cap(unsigned long long n, t_spec *result)
+int	ft_putnbr_hex_cap(unsigned int n, t_spec *result)
 {
 	const char	*hex_chars;
 	int			counter;
-	int			padding_len;
 	char		*digit;
 	int			hex_counter;
-	long			num_cp;
 
-	num_cp = n;
 	hex_counter = 1;
 	digit = ft_itoa(n);
-	padding_len = 0;
 	counter = 0;
-	while (num_cp >= 16)
-	{
-		hex_counter++;
-		num_cp /= 16;
-	}
+	hex_length_counter(n, &hex_counter);
 	if (result && result->flag_zero == 1)
-		counter = flag_zero(n, counter, hex_counter, result);
-	if (result && result->flag_precision == 1 && n != 0)
-		counter = flag_precision(n, counter, hex_counter, result);
-	if (result && result->flag_alternate_form == 1 && n != 0)
+		flag_zero(&counter, hex_counter, result);
+	if (result && result->flag_precision == 1)
+		flag_precision(&counter, hex_counter, result);
+	if (result && result->flag_alternate_form == 1 && n > 0)
 	{
 		counter += ft_putstr("0X", result);
-		counter = flag_alternate_form(n, counter, hex_counter, result);
+		flag_alternate_form(n, &counter, hex_counter, result);
 	}
 	free(digit);
 	hex_chars = "0123456789ABCDEF";

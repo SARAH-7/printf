@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putpointer.c                                    :+:      :+:    :+:   */
+/*   negtaive_signed.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbakhit <sbakhit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 17:03:40 by sbakhit           #+#    #+#             */
-/*   Updated: 2024/01/24 19:34:24 by sbakhit          ###   ########.fr       */
+/*   Created: 2024/01/25 16:37:12 by sbakhit           #+#    #+#             */
+/*   Updated: 2024/01/25 23:05:08 by sbakhit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putpointer(void *ptr, t_spec *result)
+void	negtaive_signed(unsigned int n, int *counter, t_spec *result)
 {
-	int	counter;
-
-	counter = 0;
-	counter += write(1, "0x", 2);
-	counter += ft_putnbr_hex((unsigned long)ptr, result);
-	if (result && result->flag_right_padding == 1)
+	if (result && result->flag_zero == 1)
 	{
-		result->width -= counter;
+		if ((long)n >= 4294967295)
+			result->width -= 10;
+		else
+			result->width += n;
 		while (result->width-- > 0)
-			counter += ft_putchar(' ');
-		result->flag_right_padding = 0;
+			*counter += ft_putchar('0');
+		result->flag_zero = 0;
 	}
-	return (counter);
+	if (result && result->flag_precision == 1)
+	{
+		result->width -= 10;
+		while (result->width-- > 0)
+			*counter += ft_putchar('0');
+		result->flag_precision = 0;
+	}
 }
