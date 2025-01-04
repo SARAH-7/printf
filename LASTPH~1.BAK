@@ -1,0 +1,1154 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<dos.h>
+#include<string.h>
+struct phar
+{
+char name[80];
+char company[50];
+float cost[50];
+char note[100];
+int id;
+struct dates
+{
+ int ex_day;
+ int ex_mon;
+ int ex_yea;
+}date1;
+struct dates2
+{
+int pr_day;
+int pr_mon;
+int pr_yea;
+}date2;
+}phar1;
+char y[50];int choice;
+char name[10];
+login();
+system_screen();
+add_new_medicine();
+display_medicine();
+edit_medicine();
+delet();
+delete_medicine();
+search();
+sbi();
+sbn();
+
+			   /* MAIN */
+
+main()
+{
+clrscr();
+for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(75,i);cprintf("|");delay(25);gotoxy(1,i);cprintf("|");delay(25);}
+for(int j=2;j<=74;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,3);cprintf("_");delay(5);}
+gotoxy(20,23);textcolor(WHITE);cprintf("_________________________________________");
+for(int a=4;a<=47;a++){textcolor(WHITE);gotoxy(20,a);cprintf("|");delay(15);gotoxy(61,a);cprintf("|");delay(15);}
+textcolor(WHITE);
+gotoxy(24,5);
+cprintf(" ---* IN THE NAME OF ALLAH *---");gotoxy(21,6);textcolor(WHITE);cprintf("________________________________________");
+textcolor(YELLOW);
+gotoxy(25,9);
+cprintf(" ---* ALRIBAT UNIVERSITY *---");gotoxy(21,10);textcolor(WHITE);cprintf("________________________________________");
+textcolor(BROWN);
+gotoxy(28,13);
+cprintf("---* OMDURMAN BRUNCH *---");gotoxy(21,14);textcolor(WHITE);cprintf("________________________________________");
+textcolor(CYAN);
+gotoxy(28,17);
+cprintf("---* COMPUTER SCIENCS *---");
+textcolor(GREEN);
+gotoxy(25,21);
+cprintf("---* WADI AL-NEIL PHARMACY *---");gotoxy(21,18);textcolor(WHITE);cprintf("________________________________________");delay(200);
+gotoxy(62,44);textcolor(WHITE);cprintf("_____________");
+gotoxy(63,46);textcolor(RED);cprintf("DeSiGnEd By ");
+gotoxy(62,47);textcolor(WHITE);cprintf("_____________");
+gotoxy(63,49);textcolor(WHITE);cprintf("AhMeD SaMi");
+gotoxy(21,47);textcolor(WHITE);cprintf("________________________________________");
+gotoxy(2,44);textcolor(WHITE);cprintf("__________________");
+gotoxy(2,46);textcolor(RED);cprintf("CopyRight @ 2011 ");
+gotoxy(2,47);textcolor(WHITE);cprintf("__________________");
+textcolor(WHITE);
+gotoxy(2,49);
+cprintf("Received For Al-Ribat University");
+textcolor(WHITE);
+gotoxy(35,35);
+cprintf("Please wait");textcolor(LIGHTCYAN);gotoxy(27,36);cprintf("_____________________________"); gotoxy(27,33);cprintf("_____________________________");
+  /* plese waite moving */
+textcolor(WHITE);gotoxy(46,35);delay(1000);cprintf(" .");delay(1000);cprintf(".");delay(1000);cprintf(".");delay(1000);cprintf(".");delay(500);
+gotoxy(35,35);printf("                 ");delay(1000);
+textcolor(WHITE);
+gotoxy(29,35);
+cprintf("Press any key to continue");textcolor(LIGHTCYAN);gotoxy(27,36);cprintf("_____________________________"); gotoxy(27,33);cprintf("_____________________________");
+gotoxy(55,35); getch();
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+login();
+ system_screen();
+ add_new_medicine();
+ display_medicine();
+ edit_medicine();
+ delet();
+ delete_medicine();
+ search();
+ sbi(); /*search by id*/
+ sbn(); /*search by name*/
+getch();
+}
+getch();
+			       /* login screen */
+
+ login()
+{
+int result;
+clrscr();
+int t=0;
+char ch;
+
+char pass[50];
+
+clrscr();
+	 for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(75,i);cprintf("|");delay(10);gotoxy(1,i);cprintf("|");delay(10);}
+	 for(int j=2;j<=74;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,4);cprintf("-");delay(5);}
+
+gotoxy(1,1);
+textcolor(BROWN);
+cprintf("---* LOGIN *---");gotoxy(1,2);textcolor(WHITE);cprintf("_______________");
+textcolor(GREEN);
+gotoxy(23,6);
+cprintf("---* WADI AL-NIEL PHARMACY *---");gotoxy(2,7);textcolor(WHITE);cprintf("_________________________________________________________________________");delay(500);
+gotoxy(2,47);textcolor(WHITE);cprintf("_________________________________________________________________________");
+textcolor(WHITE);
+gotoxy(2,49);
+cprintf("Copyright @ 2011 Received For Al-Ribat University");
+
+gotoxy(21,14);textcolor(BROWN);cprintf(" PLESE");delay(200);cprintf(" ENTER");delay(200);cprintf(" YOUR");delay(200);cprintf(" NAME");delay(200);cprintf(" AND");delay(200);cprintf(" PASSWORD");delay(200);
+gotoxy(21,12);textcolor(WHITE);cprintf("------------------------------------");gotoxy(21,16);cprintf("------------------------------------");
+gotoxy(17,14);textcolor(WHITE);cprintf("___");
+gotoxy(58,14);textcolor(WHITE);cprintf("___");
+
+for(int a=15;a<=47;a++){textcolor(WHITE);gotoxy(16,a);cprintf("|");delay(15);gotoxy(61,a);cprintf("|");delay(15);}
+
+for(int u=27;u<=35;u++)
+{
+textcolor(WHITE);gotoxy(22,u);cprintf("-");delay(20);
+}
+for(int r=27;r<=35;r++)
+{
+gotoxy(52,r);textcolor(WHITE);cprintf("-");delay(20);
+}
+
+
+textcolor(WHITE);
+gotoxy(25,29);
+cprintf(" NAME---:");gotoxy(23,30);textcolor(RED);cprintf("-----------------------------");gotoxy(23,28);cprintf("-----------------------------");
+
+for(int s=22;s<=52;s++){gotoxy(s,27);textcolor(WHITE);cprintf("-");gotoxy(s,31);cprintf("-");gotoxy(s,35);cprintf("-");}
+textcolor(RED);
+gotoxy(40,29);textcolor(WHITE);cprintf("[        ]");gotoxy(42,29);textcolor(CYAN);
+cscanf("  %s",&name);
+gotoxy(25,33);
+textcolor(WHITE);
+cprintf("PASSWORD---:");gotoxy(23,34);textcolor(RED);cprintf("-----------------------------");gotoxy(23,32);cprintf("-----------------------------");
+textcolor(RED);
+gotoxy(40,33);textcolor(WHITE);cprintf("[         ]");gotoxy(42,33);textcolor(CYAN);
+
+ getch();
+while((ch=getch())&&(ch!='\r'))
+{
+pass[i]=ch;
+i++;
+textcolor(CYAN);cprintf("*");
+}
+result=strcmp(name,"2")&&strcmp(pass,"2");
+if(result==0)
+{
+gotoxy(17,41);textcolor(WHITE);cprintf("____________________________________________");
+gotoxy(18,44);textcolor(6);cprintf(" HOPE TO");delay(400);cprintf(" INTEREST");delay(400);cprintf(" WITH OUR");delay(400);cprintf(" APPLICATION");delay(1600);
+
+system_screen();
+}
+else
+{
+gotoxy(17,41);textcolor(WHITE);cprintf("____________________________________________");
+gotoxy(18,44);textcolor(LIGHTMAGENTA);cprintf(" PLESE");delay(300);cprintf(" ENTER");delay(400);cprintf(" YOUR CORECT");delay(300);textcolor(WHITE);cprintf(" NAME");delay(300);textcolor(LIGHTMAGENTA);cprintf(" OR");delay(300);textcolor(WHITE);cprintf(" PASSWORD");delay(300);
+
+getch();login();
+ }
+
+}
+/*----------------------------------------------------------------------------------------------------------------------*/
+
+			    /* system screen */
+
+system_screen()
+{
+FILE *fp;
+clrscr();
+	 for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(75,i);cprintf("|");delay(10);gotoxy(1,i);cprintf("|");delay(10);}
+	 for(int j=2;j<=74;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,3);cprintf("_");delay(5);}
+gotoxy(1,1);
+textcolor(BROWN);
+cprintf("---* SYSTEM SCREEN *---");gotoxy(2,2);textcolor(WHITE);cprintf("______________________");
+textcolor(GREEN);
+gotoxy(22,5);
+cprintf("---* WADI AL NEIL PHARMACY *---");
+gotoxy(2,6);textcolor(WHITE);cprintf("_________________________________________________________________________");
+textcolor(RED);
+gotoxy(27,8);
+cprintf("ALWADI STREET - OMDURMAN ");
+gotoxy(2,9);textcolor(WHITE);cprintf("_________________________________________________________________________");
+gotoxy(3,13);
+textcolor(LIGHTCYAN);
+cprintf("Hello");
+textcolor(RED);cprintf(" [");textcolor(BROWN);cprintf(" %s ",&name);textcolor(RED);cprintf(" ]");
+textcolor(LIGHTCYAN);
+cprintf("... Please Insert Your Choice From");textcolor(WHITE);cprintf(" 1");textcolor(BROWN);cprintf(" ---->");textcolor(WHITE);cprintf(" 6 ");
+gotoxy(3,16);textcolor(BROWN);cprintf("--------------------------------");delay(200);
+gotoxy(3,19);textcolor(BROWN);cprintf("--------------------------------");delay(200);     /* underline choice*/
+gotoxy(3,22);textcolor(BROWN);cprintf("--------------------------------");delay(200);
+gotoxy(3,25);textcolor(BROWN);cprintf("--------------------------------");delay(200);
+gotoxy(3,28);textcolor(BROWN);cprintf("--------------------------------");delay(200);
+gotoxy(3,31);textcolor(BROWN);cprintf("--------------------------------");delay(200);
+gotoxy(3,34);textcolor(BROWN);cprintf("--------------------------------");delay(500);
+gotoxy(3,17);
+textcolor(WHITE);cprintf("|1-| ADD NEW MEDICINE ");delay(200);
+gotoxy(3,20);
+textcolor(WHITE);cprintf("|2-| DISPLAY MEDICINE");delay(200);
+gotoxy(3,23);
+textcolor(WHITE);cprintf("|3-| EDIT MEDICINE");delay(200);
+gotoxy(3,26);
+textcolor(WHITE);cprintf("|4-| DELETE MEDICINE");delay(200);
+gotoxy(3,29);
+textcolor(WHITE);cprintf("|5-| SEARCH");gotoxy(3,28);delay(200);
+gotoxy(3,32);
+textcolor(WHITE);cprintf("|6-| EXIT");gotoxy(3,28);delay(200);
+
+		       /* time function */
+
+ struct dostime_t t;
+  _dos_gettime(&t);
+ gotoxy(56,8);textcolor(WHITE);cprintf("time is :");
+ gotoxy(65,8);textcolor(YELLOW);cprintf("%2d:%02d:%02d",t.hour,t.minute,t.second);
+
+			 /* date function */
+struct dosdate_t d;
+  _dos_getdate(&d);
+gotoxy(3,8);textcolor(WHITE);cprintf("date is :");
+gotoxy(12,8);textcolor(YELLOW);cprintf("%d/%d/%d", d.day,d.month,d.year);
+
+
+
+gotoxy(3,36);
+textcolor(WHITE);cprintf("ENTER YOUR CHOICE PLEASE : ");delay(400);
+gotoxy(5,38);textcolor(RED);cprintf("[  ");gotoxy(8,38);cprintf("  ]");textcolor(WHITE);gotoxy(7,38);cscanf("%d",&choice);getch();
+
+
+/* the choice messege*/
+
+switch(choice)
+{
+case 1:                           /* case 1 */
+
+gotoxy(2,40);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(5,42);textcolor(CYAN);cprintf("You are About To Enter");textcolor(CYAN);cprintf(" ADD MEDICINE SCREEN");
+gotoxy(5,45);textcolor(CYAN);cprintf("Do you want to continue ??");
+textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = ADD NEW MEDICINE");
+gotoxy(35,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO CHOICE MENU");
+gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(40,50);textcolor(WHITE);cprintf("____________________________________");
+gotoxy(34,45);textcolor(RED);cprintf("[  ");gotoxy(36,45);cprintf("  ]");char con;gotoxy(36,45);textcolor(LIGHTRED);cscanf("%s",&con);
+switch(con)
+{
+case'y':add_new_medicine();break;
+case'n':system_screen();break;
+default:gotoxy(38,45);textcolor(RED);cprintf("# error choice #");getch();getch();system_screen();
+}
+
+
+case 2:                        /* case 2 */
+
+display_medicine();getch();
+break;
+
+case 3:                       /* case 3 */
+
+
+gotoxy(2,40);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(5,42);textcolor(CYAN);cprintf("You are about to enter edit medicine screen");
+gotoxy(5,45);cprintf("Do you want to continue ??");
+textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = EDIT MEDICINE");
+gotoxy(35,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO CHOICE MENU");
+gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(40,50);textcolor(WHITE);cprintf("____________________________________");
+gotoxy(34,45);textcolor(RED);cprintf("[  ");gotoxy(36,45);cprintf("  ]");char con3;gotoxy(36,45);textcolor(LIGHTRED);cscanf("%s",&con3);
+switch(con3)
+{
+case'y':edit_medicine();break;
+case'n':system_screen();break;
+default:gotoxy(38,45);textcolor(RED);cprintf("# error choice #");getch();getch();system_screen();
+}
+
+case 4:                      /* case 4 */
+
+gotoxy(2,40);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(5,42);textcolor(CYAN);cprintf("You are about to enter delete medicine screen");
+gotoxy(5,45);cprintf("Do you want to continue ??");
+textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = DELETE MEDICINE");
+gotoxy(35,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO CHOICE MENU");
+gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(40,50);textcolor(WHITE);cprintf("____________________________________");
+gotoxy(34,45);textcolor(RED);cprintf("[  ");gotoxy(36,45);cprintf("  ]");char con4;gotoxy(36,45);textcolor(LIGHTRED);cscanf("%s",&con4);
+switch(con4)
+{
+case'y':delet();break;
+case'n':system_screen();break;
+default:gotoxy(38,45);textcolor(RED);cprintf("# error choice #");getch();getch();system_screen();
+}
+
+
+case 5:                       /* case 5 */
+
+gotoxy(2,40);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(5,42);textcolor(CYAN);cprintf("You are about to enter search medicine screen");
+gotoxy(5,45);cprintf("Do you want to continue ??");
+textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = SEARCH MEDICINE");
+gotoxy(35,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO CHOICE MENU");
+gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(40,50);textcolor(WHITE);cprintf("____________________________________");
+gotoxy(34,45);textcolor(RED);cprintf("[  ");gotoxy(36,45);cprintf("  ]");char con5;gotoxy(36,45);textcolor(LIGHTRED);cscanf("%s",&con5);
+switch(con5)
+{
+case'y':search();break;
+case'n':system_screen();break;
+default:gotoxy(38,45);textcolor(RED);cprintf("# error choice #");getch();getch();system_screen();
+}
+
+case 6:                        /* case 6 */
+
+gotoxy(2,43);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(5,45);textcolor(CYAN);cprintf("Are You Sure You Want To EXIT ??");
+gotoxy(3,32);textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = EXIT");
+gotoxy(35,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO CHOICE MENU");
+gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(40,50);textcolor(WHITE);cprintf("____________________________________");
+gotoxy(37,45);textcolor(RED);cprintf("[  ");gotoxy(39,45);cprintf("  ]");char con6;gotoxy(39,45);textcolor(LIGHTRED);cscanf("%s",&con6);
+switch(con6)
+{
+case'y':exit(0);break;
+case'n':system_screen();break;
+default:gotoxy(40,45);textcolor(RED);cprintf("# error choice #");getch();getch();exit(0);}
+default:textcolor(RED);gotoxy(3,40);cprintf("# ERROR CHOICE... please try again... #");textcolor(WHITE);gotoxy(3,38);cprintf("_______________________________________");gotoxy(3,41);cprintf("---------------------------------------");gotoxy(44,37);delay(1000);
+system_screen();
+}
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+			   /* add new medicine screen */
+
+add_new_medicine()
+{
+char again;
+FILE *fp;
+clrscr();
+fp=fopen("c:\\med.data","ab");
+if(fp==NULL)
+{
+printf("ERROR in opening file...");
+getch();
+system_screen();
+}
+gotoxy(1,1);textcolor(BROWN);cprintf("---* ADD NEW MEDICINE *---");
+gotoxy(1,2);textcolor(WHITE);cprintf("__________________________");
+for(int i=4;i<=50;i++){gotoxy(75,i);textcolor(WHITE);cprintf("|");delay(10);gotoxy(1,i);cprintf("|");delay(10);}
+for(int j=2;j<=74;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,3);cprintf("_");delay(5);}
+gotoxy(3,5);textcolor(WHITE);cprintf("Enter medicine name --:");
+gotoxy(3,6);cprintf("________________________________________________________________________");
+gotoxy(34,5);textcolor(GREEN);cscanf("%s",phar1.name);gotoxy(50,5);textcolor(RED);cprintf("saving...");delay(500);gotoxy(50,5); printf("         ");
+gotoxy(3,8);textcolor(WHITE);cprintf("Enter medicine id --:");gotoxy(3,9);cprintf("________________________________________________________________________");
+gotoxy(34,8);textcolor(GREEN);cscanf("%d",&phar1.id);gotoxy(50,8);textcolor(RED);cprintf("saving...");delay(500);gotoxy(50,8); printf("         ");
+
+gotoxy(3,11);textcolor(WHITE);cprintf("Enter Expiration date --:");gotoxy(3,12);cprintf("________________________________________________________________________");
+gotoxy(34,11);textcolor(GREEN);cscanf("%d",&phar1.date1.ex_day);gotoxy(36,11);textcolor(WHITE);cprintf("/");
+gotoxy(37,11);textcolor(GREEN);cscanf("%d",&phar1.date1.ex_mon);textcolor(WHITE);gotoxy(39,11);cprintf("/");
+gotoxy(40,11);textcolor(GREEN);cscanf("%d",&phar1.date1.ex_yea);
+gotoxy(50,11);textcolor(RED);cprintf("saving...");delay(500);gotoxy(50,11); printf("         ");
+
+gotoxy(3,14);textcolor(WHITE);cprintf("Enter Production date --:");gotoxy(3,15);cprintf("________________________________________________________________________");
+gotoxy(34,14);textcolor(GREEN);cscanf("%d",&phar1.date2.pr_day);gotoxy(36,14);textcolor(WHITE);cprintf("/");
+gotoxy(37,14);textcolor(GREEN);cscanf(" %d",&phar1.date2.pr_mon);textcolor(WHITE);gotoxy(39,14);cprintf("/");
+gotoxy(40,14);textcolor(GREEN);cscanf(" %d",&phar1.date2.pr_yea);
+gotoxy(50,14);textcolor(RED);cprintf("saving...");delay(500);gotoxy(50,14); printf("         ");
+
+gotoxy(3,17);textcolor(WHITE);cprintf("Enter company of medicine --:");gotoxy(3,18);cprintf("________________________________________________________________________");
+gotoxy(34,17);textcolor(GREEN);cscanf("%s",phar1.company);gotoxy(50,17);textcolor(RED);cprintf("saving...");delay(500);gotoxy(50,17); printf("         ");
+
+gotoxy(3,20);textcolor(WHITE);cprintf("Enter cost of medicine --:");gotoxy(3,21);cprintf("________________________________________________________________________");
+gotoxy(34,20);textcolor(GREEN);cscanf("%s",phar1.cost);gotoxy(50,20);textcolor(RED);cprintf("saving...");delay(500);gotoxy(50,20); printf("         ");
+
+gotoxy(3,23);textcolor(WHITE);cprintf("Enter some note about medicine --:");
+gotoxy(38,23);gets(phar1.note);gotoxy(3,24);textcolor(WHITE);cprintf("________________________________________________________________________");
+
+gotoxy(3,27);textcolor(-12);cprintf("# Save done ... #");
+gotoxy(3,26);textcolor(WHITE);cprintf("-----------------");
+gotoxy(3,28);cprintf("-----------------");delay(1500);
+
+fwrite(&phar1,sizeof(phar1),1,fp);
+fclose(fp);
+gotoxy(3,30);textcolor(WHITE);cprintf("________________________________________________________________________");
+gotoxy(3,32);textcolor(LIGHTGRAY);cprintf("do you want to enter data again");
+textcolor(LIGHTRED);cprintf(" (Y)");textcolor(LIGHTGRAY);cprintf(" yes");
+textcolor(LIGHTRED);cprintf(" (N)");textcolor(LIGHTGRAY);cprintf(" No  ??");
+gotoxy(3,33);textcolor(WHITE);cprintf("________________________________________________________________________");
+textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = RE-ENTER");
+gotoxy(30,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO SYSTEM SCREEN");
+gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(55,32);textcolor(LIGHTRED);cscanf("%s",&again);
+switch(again)
+{
+case 'y':add_new_medicine();getch();
+break;
+case 'Y':add_new_medicine();getch();
+break;
+
+case 'n':system_screen();getch();
+break;
+case 'N':system_screen();getch();
+break;
+
+default:gotoxy(5,32);textcolor(RED);cprintf(" wrong choice...");delay(2000);
+}
+getch();
+system_screen();
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------*/
+
+			      /* display screen */
+
+display_medicine()
+ {
+ FILE *fp;
+ clrscr();int flage=0;
+ fp=fopen("c:\\med.dat","rb");
+ if(fp==NULL)
+ {
+ for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(75,i);cprintf("|");delay(15);gotoxy(1,i);cprintf("|");delay(15);}
+ for(int j=2;j<=75;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,4);cprintf("-");delay(5);}
+
+/* erorr open file screen and error open box */
+
+textcolor(BROWN);gotoxy(28,19);cprintf("------------------------");
+gotoxy(28,30);cprintf("------------------------");
+gotoxy(47,27);textcolor(RED);gotoxy(30,22);cprintf("error");delay(500);cprintf(" in");delay(500);cprintf(" opening");delay(500);cprintf(" file");delay(500);
+textcolor(WHITE);gotoxy(33,27);cprintf("File not found");
+
+for(int u=19;u<=30;u++)
+{
+textcolor(BROWN);gotoxy(28,u);cprintf("-");delay(20);
+}
+for(int r=19;r<=30;r++)
+{
+gotoxy(52,r);textcolor(BROWN);cprintf("-");delay(20);
+}
+
+ getch();
+system_screen();
+ }
+
+ fread(&phar1,sizeof(phar1),1,fp);
+ for(int j=2;j<=75;j++)
+ {
+ gotoxy(j,1);textcolor(BROWN);cprintf("-");
+ }
+ while(!feof(fp))
+ {
+ if(feof(fp)==0)
+ {
+ printf("\n\n please waite ...");delay(500);
+ printf("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b                     ");
+ textcolor(GREEN);
+printf(" \n\n - Medicine-name   		         ");printf(":=========>  ");printf("[ %s ] \n\n",phar1.name);
+
+printf("    \n - Medicine-ID                           ");printf(":=========>  ");printf("[ %d ] \n\n",phar1.id);
+
+printf("    \n - Medicine-exp-date :  [dd/mm/yy]       ");printf(":=========>  ");printf("[ %d",phar1.date1.ex_day);
+printf("/");printf("%d",phar1.date1.ex_mon);printf("/");printf("%d ]\n\n",phar1.date1.ex_yea);
+
+printf("    \n - Medicine-prod-date:  [dd/mm/yy]       ");printf(":=========>  ");printf("[ %d",phar1.date2.pr_day);
+printf("/");printf("%d",phar1.date2.pr_mon);printf("/");printf("%d ] \n\n",phar1.date2.pr_yea);
+
+printf("    \n - Medicine-company		         ");printf(":=========>  ");printf("[ %s ]\n\n",phar1.company);
+
+printf("    \n - Medicine-price 	                 ");printf(":=========>  ");printf("[ %s ] \n\n",phar1.cost);
+
+printf("    \n - NOTE ABOUT MEDICINE :");puts(phar1.note);printf("\n----------------------------------------------------------------------------");delay(1000);flage=1;}
+
+getch();
+ fread(&phar1,sizeof(phar1),1,fp);
+ }
+ fclose(fp);
+ if(flage==0)
+ {
+ clrscr();
+ for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(75,i);cprintf("|");delay(15);gotoxy(1,i);cprintf("|");delay(15);}
+ for(int j=2;j<=75;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,4);cprintf("-");delay(5);}
+
+ textcolor(BROWN);gotoxy(28,19);cprintf("------------------------");
+gotoxy(28,30);cprintf("------------------------");
+gotoxy(47,27);textcolor(RED);gotoxy(30,22);cprintf("error");delay(500);cprintf(" in");delay(500);cprintf(" opening");delay(500);cprintf(" file");delay(500);
+textcolor(WHITE);gotoxy(33,27);cprintf("File is empty");
+
+for(int u=19;u<=30;u++)
+{
+textcolor(BROWN);gotoxy(28,u);cprintf("-");delay(20);
+}
+for(int r=19;r<=30;r++)
+{
+gotoxy(52,r);textcolor(BROWN);cprintf("-");delay(20);
+}
+gotoxy(20,38);textcolor(WHITE);cprintf("press any key to return to system screen...");
+gotoxy(20,39);textcolor(RED);cprintf("___________________________________________");
+gotoxy(20,36);cprintf("___________________________________________");gotoxy(63,38);
+
+ getch();
+ }
+system_screen();
+
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------*/
+
+			       /* edit screen */
+
+edit_medicine()
+{
+FILE *fp1,*fp2;
+int pharid,flag=0;
+clrscr();
+fp1=fopen("c:\\med.dat","rb");
+fp2=fopen("c:\\temp.dat","wb");
+if(fp1==NULL||fp2==NULL)
+{
+for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(75,i);cprintf("|");delay(10);gotoxy(1,i);cprintf("|");delay(10);}
+for(int j=2;j<=75;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,4);cprintf("-");delay(5);}
+
+textcolor(RED);gotoxy(30,22);cprintf("error in opening file");textcolor(WHITE);gotoxy(33,27);
+cprintf("File not found");
+
+for(int u=19;u<=30;u++){textcolor(BROWN);gotoxy(28,u);cprintf("-");}
+for(int r=19;r<=30;r++){gotoxy(52,r);textcolor(BROWN);cprintf("-");}
+gotoxy(28,19);cprintf("------------------------");gotoxy(28,30);cprintf("------------------------");
+gotoxy(47,27);
+getch();getch();
+system_screen();
+
+}
+
+gotoxy(1,1);textcolor(BROWN);
+cprintf("---* EDIT MEDICINE *---");
+gotoxy(1,2);textcolor(WHITE);cprintf("_______________________");
+for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(75,i);cprintf("|");delay(10);gotoxy(1,i);cprintf("|");delay(10);}
+for(int j=2;j<=75;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,3);cprintf("_");delay(5);}
+
+gotoxy(3,6);textcolor(CYAN);
+cprintf("1- Enter medicine ID");
+gotoxy(3,7);textcolor(WHITE);cprintf("________________________________________________________________________");
+gotoxy(40,6);textcolor(BROWN);cscanf("%d",&pharid);
+gotoxy(55,6);textcolor(RED);cprintf("searching...");delay(700);
+gotoxy(55,6); printf("            ");
+
+fread(&phar1,sizeof(phar1),1,fp1);
+while(!feof(fp1))
+{
+if(phar1.id==pharid)
+
+{
+
+gotoxy(3,9);
+textcolor(CYAN);
+cprintf("2- Enter New medicine name :");
+gotoxy(3,10);textcolor(WHITE);cprintf("________________________________________________________________________");
+textcolor(BROWN);
+gotoxy(40,9);cscanf("%s",phar1.name);gotoxy(55,9);textcolor(RED);cprintf("Updating...");delay(600);
+gotoxy(55,9); printf("           ");
+
+gotoxy(3,12);textcolor(CYAN);
+cprintf("3- Enter new ID :");
+gotoxy(3,13);textcolor(WHITE);cprintf("________________________________________________________________________");
+textcolor(BROWN);gotoxy(40,12);cscanf("%d",&phar1.id);
+gotoxy(55,12);textcolor(RED);cprintf("Updating...");delay(600);
+gotoxy(55,12); printf("           ");
+
+gotoxy(3,15);textcolor(CYAN);
+cprintf("4- Enter new medicine cost :");
+gotoxy(3,16);textcolor(WHITE);cprintf("________________________________________________________________________");
+textcolor(BROWN);gotoxy(40,15);cscanf("%s",&phar1.cost);
+gotoxy(55,15);textcolor(RED);cprintf("Updating...");delay(600);
+gotoxy(55,15); printf("           ");
+
+gotoxy(3,18);textcolor(CYAN);
+cprintf("5- Enter new medicine company :");
+gotoxy(3,19);textcolor(WHITE);cprintf("________________________________________________________________________");
+textcolor(BROWN);gotoxy(40,18);cscanf("%s",&phar1.company);
+gotoxy(55,18);textcolor(RED);cprintf("Updating...");delay(600);
+gotoxy(55,18); printf("           ");
+
+gotoxy(3,21);textcolor(CYAN);
+cprintf("6- Enter new medicine exp-date :");
+gotoxy(3,22);textcolor(WHITE);cprintf("________________________________________________________________________");
+textcolor(BROWN);
+gotoxy(40,21);textcolor(BROWN);cscanf("%d",&phar1.date1.ex_day);gotoxy(42,21);textcolor(WHITE);cprintf("/");
+gotoxy(43,21);textcolor(BROWN);cscanf("%d",&phar1.date1.ex_mon);textcolor(WHITE);gotoxy(45,21);cprintf("/");
+gotoxy(46,21);textcolor(BROWN);cscanf("%d",&phar1.date1.ex_yea);
+gotoxy(55,21);textcolor(RED);cprintf("Updating...");delay(600);
+gotoxy(55,21); printf("           ");
+
+gotoxy(3,24);textcolor(CYAN);
+cprintf("7- Enter new medicine pro-date :");
+gotoxy(3,25);textcolor(WHITE);cprintf("________________________________________________________________________");
+textcolor(BROWN);
+gotoxy(40,24);textcolor(BROWN);cscanf("%d",&phar1.date2.pr_day);gotoxy(42,24);textcolor(WHITE);cprintf("/");
+gotoxy(43,24);textcolor(BROWN);cscanf("%d",&phar1.date2.pr_mon);textcolor(WHITE);gotoxy(45,24);cprintf("/");
+gotoxy(46,24);textcolor(BROWN);cscanf("%d",&phar1.date2.pr_yea);
+gotoxy(55,24);textcolor(RED);cprintf("Updating...");delay(600);
+gotoxy(55,24); printf("           ");
+
+
+flag=1;
+
+}
+fwrite(&phar1,sizeof(phar1),1,fp2);
+fread(&phar1,sizeof(phar1),1,fp1);
+}
+fclose(fp1);
+fclose(fp2);
+fp1=fopen("c:\\med.dat","wb");
+fp2=fopen("c:\\temp.dat","rb");
+if(fp1==NULL||fp2==NULL)
+{
+printf("Error in opening file");
+getch();
+system_screen();
+}
+fread(&phar1,sizeof(phar1),1,fp2);
+while(!feof(fp2))
+{
+fwrite(&phar1,sizeof(phar1),1,fp1);
+fread(&phar1,sizeof(phar1),1,fp2);
+}
+fclose(fp1);
+fclose(fp2);
+remove("c:\\temp.dat");
+if(flag==1)
+{
+gotoxy(3,30);textcolor(-10);cprintf("[ Update successfully... ]");
+gotoxy(3,28);textcolor(GREEN);cprintf("___________________________");gotoxy(3,31);cprintf("___________________________");
+gotoxy(3,32);textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = EDIT AGAIN");
+gotoxy(30,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO SYSTEM SCREEN");
+gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(26,40);textcolor(WHITE);cprintf("Do you want to edit again...");
+gotoxy(20,41);textcolor(RED);cprintf("___________________________________________");
+gotoxy(20,38);cprintf("___________________________________________");
+getch();
+
+char rem;gotoxy(57,40);scanf("%s",&rem);
+
+switch(rem)
+{
+case 'y':edit_medicine();
+break;
+case 'n':system_screen();
+break;
+default:
+gotoxy(5,22);textcolor(RED);cprintf("# You enter wrong choice ... # ");getch();system_screen();
+} }
+else
+{
+textcolor(WHITE);gotoxy(55,6);cprintf(" Not found!!...");
+gotoxy(3,10);textcolor(LIGHTGRAY);cprintf("do you want to enter data again");
+textcolor(LIGHTRED);cprintf(" (Y)");textcolor(LIGHTGRAY);cprintf(" yes");
+textcolor(LIGHTRED);cprintf(" (N)");textcolor(LIGHTGRAY);cprintf(" No  ??");
+gotoxy(3,12);textcolor(WHITE);cprintf("________________________________________________________________________");
+gotoxy(3,32);textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = RE-ENTER");
+gotoxy(30,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO SYSTEM SCREEN");
+gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+char tri;gotoxy(55,10);scanf("%s",&tri);getch();
+switch(tri)
+{
+case 'y':edit_medicine();
+break;
+case 'n':system_screen();
+break;
+default:
+gotoxy(5,22);textcolor(RED);cprintf("# You enter wrong choice ... # ");getch();system_screen();
+}}
+ getch();
+ system_screen();
+}
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+			      /* delete screen */
+
+ delet()
+{
+int choice5;
+
+clrscr();
+
+gotoxy(1,1);textcolor(LIGHTRED);cprintf("---* DELETE MEDICINE *---");
+gotoxy(1,2);textcolor(WHITE);cprintf("_________________________");
+
+for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(70,i);cprintf("|");delay(10);gotoxy(1,i);cprintf("|");delay(10);}
+for(int j=2;j<=69;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,3);cprintf("_");delay(5);}
+gotoxy(10,8);textcolor(LIGHTCYAN);cprintf("___");
+gotoxy(56,8);textcolor(LIGHTCYAN);cprintf("___");
+for(int a=9;a<=47;a++){textcolor(LIGHTCYAN);gotoxy(9,a);cprintf("|");delay(15);gotoxy(59,a);cprintf("|");delay(15);}
+gotoxy(10,47);textcolor(LIGHTCYAN);cprintf("_________________________________________________");
+gotoxy(14,8);
+textcolor(CYAN);
+cprintf("Please Insert Your Choice From");textcolor(WHITE);cprintf(" 1");textcolor(BROWN);cprintf(" ---->");textcolor(WHITE);cprintf(" 3 ");
+
+
+for(int u=15;u<=32;u++){textcolor(YELLOW);gotoxy(16,u);cprintf("|");}
+for(int r=15;r<=32;r++){gotoxy(52,r);textcolor(YELLOW);cprintf("|");}
+gotoxy(16,14);textcolor(RED);cprintf("*");gotoxy(17,14);textcolor(YELLOW);cprintf("-----------------------------------");
+gotoxy(52,14);textcolor(RED);cprintf("*");gotoxy(16,33);cprintf("*");gotoxy(17,33);textcolor(YELLOW);cprintf("-----------------------------------");
+gotoxy(52,33);textcolor(RED);cprintf("*");
+for( u=34;u<=44;u++){textcolor(YELLOW);gotoxy(16,u);cprintf("|");}
+for( r=34;r<=44;r++){gotoxy(52,r);textcolor(YELLOW);cprintf("|");}
+
+gotoxy(17,44);textcolor(YELLOW);cprintf("___________________________________");
+gotoxy(20,19);textcolor(LIGHTCYAN);cprintf("-------------------------");
+gotoxy(20,23);textcolor(LIGHTCYAN);cprintf("------------------------");
+gotoxy(20,26);textcolor(LIGHTCYAN);cprintf("------------------------");
+gotoxy(20,29);textcolor(LIGHTCYAN);cprintf("------------------------");
+gotoxy(17,34);textcolor(YELLOW);cprintf("-----------------------------------");
+gotoxy(17,38);cprintf("-----------------------------------");
+gotoxy(20,18);textcolor(LIGHTRED);cprintf("HOW DO YOU WANT TO DELETE");
+gotoxy(20,22);textcolor(WHITE);cprintf("1- BY ID");
+gotoxy(20,25);textcolor(WHITE);cprintf("2- BY NAME");
+gotoxy(20,28);textcolor(WHITE);cprintf("3- BACK TO SYSTEM SCREEN");
+textcolor(WHITE);gotoxy(18,36);cprintf("Enter your choice :");
+textcolor(WHITE);cscanf("%d",&choice5);
+switch(choice5)
+{
+case 1:delete_medicine();
+break;
+case 2:sbn();
+break;
+case 3:system_screen();
+break;
+default:
+gotoxy(19,40);textcolor(RED);cprintf("WRONG CHOICE TRY AGAIN...");
+gotoxy(17,42);textcolor(YELLOW);cprintf("-----------------------------------");gotoxy(43,40);getch();
+getch();
+search();
+}
+}
+
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+			    /* delete by id */
+
+
+
+delete_medicine()
+{
+FILE *fp1,*fp2;
+int pharid,flag=0;
+clrscr();
+
+fp1=fopen("c:\\med.dat","rb");
+fp2=fopen("c:\\temp.dat","wb");
+if(fp1==NULL||fp2==NULL)
+{
+for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(75,i);cprintf("|");delay(15);gotoxy(1,i);cprintf("|");delay(15);}
+for(int j=2;j<=75;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,4);cprintf("-");delay(5);}
+
+textcolor(RED);gotoxy(30,22);cprintf("error in opening file");
+textcolor(WHITE);gotoxy(33,27);cprintf("File not found");
+
+for(int u=19;u<=30;u++){textcolor(BROWN);gotoxy(28,u);cprintf("-");}
+for(int r=19;r<=30;r++){gotoxy(52,r);textcolor(BROWN);cprintf("-");}gotoxy(28,19);
+
+cprintf("------------------------");gotoxy(28,30);cprintf("------------------------");gotoxy(47,27);
+
+getch();getch();
+system_screen();
+}
+for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(75,i);cprintf("|");delay(10);gotoxy(1,i);cprintf("|");delay(10);}
+for(int j=2;j<=74;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,3);cprintf("_");delay(5);}
+
+gotoxy(3,5);textcolor(LIGHTCYAN);cprintf("Enter File ID to Remove It :");
+gotoxy(2,6);textcolor(WHITE);cprintf("________________________________________________________________________");
+gotoxy(35,5);scanf("%d",&pharid);
+gotoxy(55,5);textcolor(RED);cprintf("Searching...");delay(600);
+gotoxy(55,5); printf("            ");
+
+fread(&phar1,sizeof(phar1),1,fp1);
+while(!feof(fp1))
+{
+if(phar1.id!=pharid)
+
+fwrite(&phar1,sizeof(phar1),1,fp2);
+else
+flag=1;
+fread(&phar1,sizeof(phar1),1,fp1);
+}
+fclose(fp1);
+fclose(fp2);
+fp1=fopen("c:\\med.dat","wb");
+fp2=fopen("c:\\temp.dat","rb");
+if(fp1==NULL||fp2==NULL)
+{
+printf("Error in opening file");
+getch();
+system_screen();
+}
+fread(&phar1,sizeof(phar1),1,fp2);
+while(!feof(fp2))
+{
+fwrite(&phar1,sizeof(phar1),1,fp1);
+fread(&phar1,sizeof(phar1),1,fp2);
+}
+fclose(fp1);
+fclose(fp2);
+remove("c:\\temp.dat");
+if(flag==1)
+ {
+ gotoxy(55,5);textcolor(RED);cprintf("Deleting...");delay(1000);
+gotoxy(55,5); printf("           ");
+
+gotoxy(3,22);textcolor(-10);cprintf("[ DELETE successfully... ]");
+gotoxy(3,20);textcolor(GREEN);cprintf("___________________________");
+gotoxy(3,23);cprintf("___________________________");
+gotoxy(3,32);textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = REMOVE AGAIN");
+gotoxy(30,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO SYSTEM SCREEN");
+gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(25,30);textcolor(WHITE);cprintf("Do you want to delete again...");
+gotoxy(20,31);textcolor(RED);cprintf("___________________________________________");
+gotoxy(20,28);cprintf("___________________________________________");gotoxy(63,30);
+
+char rem;gotoxy(57,30);scanf("%s",&rem);
+
+switch(rem)
+{
+case 'y':delete_medicine();
+break;
+case 'n':system_screen();
+break;
+default:
+gotoxy(5,22);textcolor(RED);cprintf("# You enter wrong choice ... # ");getch();system_screen();
+}
+}
+else
+{
+textcolor(WHITE);gotoxy(55,5);cprintf(" Not found!!...");
+gotoxy(3,22);textcolor(-10);cprintf("[ FILE NOT FOUND... ]");
+gotoxy(3,20);textcolor(GREEN);cprintf("___________________________");
+gotoxy(3,23);cprintf("___________________________");
+
+gotoxy(25,30);textcolor(WHITE);cprintf("Do you want to delete again...");
+gotoxy(20,31);textcolor(RED);cprintf("___________________________________________");
+gotoxy(20,28);cprintf("___________________________________________");gotoxy(63,30);
+
+gotoxy(3,32);textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = REMOVE AGAIN");
+gotoxy(30,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO SYSTEM SCREEN");
+gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+char rem;gotoxy(57,30);scanf("%s",&rem);
+
+switch(rem)
+{
+case 'y':delete_medicine();
+break;
+case 'n':system_screen();
+break;
+default:
+gotoxy(5,22);textcolor(RED);cprintf("# You enter wrong choice ... # ");getch();system_screen();
+}}
+
+getch();system_screen();
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+			   /* search screen */
+
+
+search()
+{
+int choice5;
+
+clrscr();
+
+gotoxy(1,1);textcolor(BROWN);cprintf("---* SEARCH MEDICINE *---");
+gotoxy(1,2);textcolor(WHITE);cprintf("_________________________");
+
+for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(70,i);cprintf("|");delay(10);gotoxy(1,i);cprintf("|");delay(10);}
+for(int j=2;j<=69;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,3);cprintf("_");delay(5);}
+gotoxy(10,8);textcolor(LIGHTCYAN);cprintf("___");
+gotoxy(56,8);textcolor(LIGHTCYAN);cprintf("___");
+for(int a=9;a<=47;a++){textcolor(LIGHTCYAN);gotoxy(9,a);cprintf("|");delay(15);gotoxy(59,a);cprintf("|");delay(15);}
+gotoxy(10,47);textcolor(LIGHTCYAN);cprintf("_________________________________________________");
+gotoxy(14,8);
+textcolor(CYAN);
+cprintf("Please Insert Your Choice From");textcolor(WHITE);cprintf(" 1");textcolor(BROWN);cprintf(" ---->");textcolor(WHITE);cprintf(" 3 ");
+
+
+for(int u=15;u<=32;u++){textcolor(YELLOW);gotoxy(16,u);cprintf("|");}
+for(int r=15;r<=32;r++){gotoxy(52,r);textcolor(YELLOW);cprintf("|");}
+gotoxy(16,14);textcolor(RED);cprintf("*");gotoxy(17,14);textcolor(YELLOW);cprintf("-----------------------------------");
+gotoxy(52,14);textcolor(RED);cprintf("*");gotoxy(16,33);cprintf("*");gotoxy(17,33);textcolor(YELLOW);cprintf("-----------------------------------");
+gotoxy(52,33);textcolor(RED);cprintf("*");
+for( u=34;u<=44;u++){textcolor(YELLOW);gotoxy(16,u);cprintf("|");}
+for( r=34;r<=44;r++){gotoxy(52,r);textcolor(YELLOW);cprintf("|");}
+
+gotoxy(17,44);textcolor(YELLOW);cprintf("___________________________________");
+gotoxy(20,19);textcolor(LIGHTCYAN);cprintf("-------------------------");
+gotoxy(20,23);textcolor(LIGHTCYAN);cprintf("------------------------");
+gotoxy(20,26);textcolor(LIGHTCYAN);cprintf("------------------------");
+gotoxy(20,29);textcolor(LIGHTCYAN);cprintf("------------------------");
+gotoxy(17,34);textcolor(YELLOW);cprintf("-----------------------------------");
+gotoxy(17,38);cprintf("-----------------------------------");
+gotoxy(20,18);textcolor(WHITE);cprintf("HOW DO YOU WANT TO SEARCH");
+gotoxy(20,22);textcolor(WHITE);cprintf("1- BY ID");
+gotoxy(20,25);textcolor(WHITE);cprintf("2- BY NAME");
+gotoxy(20,28);textcolor(WHITE);cprintf("3- BACK TO SYSTEM SCREEN");
+gotoxy(18,36);cprintf("Enter your choice :");
+textcolor(WHITE);cscanf("%d",&choice5);
+switch(choice5)
+{
+case 1:sbi();
+break;
+case 2:sbn();
+break;
+case 3:system_screen();
+break;
+default:
+gotoxy(19,40);textcolor(RED);cprintf("WRONG CHOICE TRY AGAIN...");
+gotoxy(17,42);textcolor(YELLOW);cprintf("-----------------------------------");gotoxy(43,40);getch();
+getch();
+search();
+}
+}
+
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+			  /* search by id screen */
+
+
+
+sbi()
+ {
+ FILE *fp;
+ int pharid;
+ int flage=0;
+ clrscr();
+ fp=fopen("c:\\med.dat","rb");
+ if(fp==NULL)
+ {
+ for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(75,i);cprintf("|");delay(15);gotoxy(1,i);cprintf("|");delay(15);}
+ for(int j=2;j<=75;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,4);cprintf("-");delay(5);}
+
+/* erorr open file screen and error open box */
+
+textcolor(BROWN);gotoxy(28,19);cprintf("------------------------");
+gotoxy(28,30);cprintf("------------------------");
+textcolor(RED);gotoxy(30,22);cprintf("error");delay(500);cprintf(" in");delay(500);cprintf(" opening");delay(500);cprintf(" file");delay(500);
+textcolor(WHITE);gotoxy(33,27);cprintf("File not found");
+
+for(int u=19;u<=30;u++){textcolor(BROWN);gotoxy(28,u);cprintf("-");delay(20);}
+for(int r=19;r<=30;r++){gotoxy(52,r);textcolor(BROWN);cprintf("-");delay(20);}getch();
+
+ getch();
+system_screen();
+ }
+ gotoxy(1,1);textcolor(BROWN);cprintf("---* SEARCH BY ID *---");
+gotoxy(1,2);textcolor(WHITE);cprintf("______________________");
+
+gotoxy(3,6);textcolor(CYAN);
+cprintf("- Enter medicine ID :");
+gotoxy(2,8);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(2,4);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(40,6);textcolor(BROWN);cscanf("%d",&pharid);
+gotoxy(55,6);textcolor(RED);cprintf("searching...");delay(600);gotoxy(55,6); printf("            ");
+
+fread(&phar1,sizeof(phar1),1,fp);
+ while(!feof(fp))
+ {
+ if(pharid==phar1.id)
+ {
+
+printf(" \n\n\n Medicine-name   		         ");printf(":=========>   ");printf("[ %s ] \n\n",phar1.name);
+
+printf("    \n Medicine-ID                             ");printf(":=========>   ");printf("[ %d ] \n\n",phar1.id);
+
+printf("    \n Medicine-exp-date :  [dd/mm/yy]         ");printf(":=========>   ");printf("[ %d",phar1.date1.ex_day);
+printf("/");printf("%d",phar1.date1.ex_mon);printf("/");printf("%d ]\n\n",phar1.date1.ex_yea);
+
+printf("    \n Medicine-prod-date:  [dd/mm/yy]         ");printf(":=========>   ");printf("[ %d",phar1.date2.pr_day);
+printf("/");printf("%d",phar1.date2.pr_mon);printf("/");printf("%d ] \n\n",phar1.date2.pr_yea);
+
+printf("    \n Medicine-company		         ");printf(":=========>   ");printf("[ %s ]\n\n",phar1.company);
+
+printf("    \n Medicine-price 	                 ");printf(":=========>   ");printf("[ %s ] \n\n",phar1.cost);
+
+printf("    \n NOTE ABOUT MEDICINE :");puts(phar1.note);printf("\n ---------------------------------------------------------------------------");delay(1000);
+
+flage==1;
+
+gotoxy(3,46);textcolor(LIGHTGRAY);cprintf("do you want to SEARCH again");
+textcolor(LIGHTRED);cprintf(" (Y)");textcolor(LIGHTGRAY);cprintf(" yes");
+textcolor(LIGHTRED);cprintf(" (N)");textcolor(LIGHTGRAY);cprintf(" No  ??");
+gotoxy(3,32);textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = RE-SEARCH");
+gotoxy(30,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO SYSTEM SCREEN");
+gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(2,44);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+char search;gotoxy(50,46);scanf("%s",&search);getch();
+switch(search)
+{
+case 'y':sbi();
+break;
+case 'n':system_screen();
+break;
+default:
+gotoxy(52,46);textcolor(RED);cprintf("# wrong choice # ");getch();system_screen();
+}
+
+}
+ fread(&phar1,sizeof(phar1),1,fp);
+ }
+ fclose(fp);
+ if(flage==0)
+ {
+ textcolor(WHITE);gotoxy(5,10);cprintf(" Not found!!...");
+ gotoxy(3,15);textcolor(LIGHTGRAY);cprintf("do you want to SEARCH again");
+ textcolor(LIGHTRED);cprintf(" (Y)");textcolor(LIGHTGRAY);cprintf(" yes");
+ textcolor(LIGHTRED);cprintf(" (N)");textcolor(LIGHTGRAY);cprintf(" No  ??");
+ gotoxy(3,32);textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = RE-SEARCH");
+ gotoxy(30,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO SYSTEM SCREEN");
+ gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+
+ char sss;gotoxy(5,18);scanf("%s",&sss);getch();
+switch(sss)
+{
+case 'y':sbi();
+break;
+case 'n':system_screen();
+break;
+default:
+gotoxy(5,18);textcolor(RED);cprintf("# wrong choice # ");getch();system_screen();
+}}
+ getch();search();
+ }
+
+/*----------------------------------------------------------------------------------------------------------------------------------*/
+
+		       /* search by name screen */
+
+
+
+ sbn()
+ {
+ FILE *fp;
+ int flage=0;
+ char pharname[50];
+ clrscr();
+ fp=fopen("c:\\med.dat","rb");
+ if(fp==NULL)
+ {
+
+ for(int i=4;i<=50;i++){textcolor(WHITE);gotoxy(75,i);cprintf("|");delay(15);gotoxy(1,i);cprintf("|");delay(15);}
+ for(int j=2;j<=75;j++){gotoxy(j,50);cprintf("_");delay(5);gotoxy(j,4);cprintf("-");delay(5);}
+
+textcolor(BROWN);gotoxy(28,19);cprintf("------------------------");gotoxy(28,30);
+cprintf("------------------------");
+textcolor(RED);gotoxy(30,22);cprintf("error");delay(500);cprintf(" in");delay(500);cprintf(" opening");delay(500);cprintf(" file");delay(500);
+textcolor(WHITE);gotoxy(33,27);cprintf("File not found");
+
+for(int u=19;u<=30;u++){textcolor(BROWN);gotoxy(28,u);cprintf("-");delay(20);}
+for(int r=19;r<=30;r++){gotoxy(52,r);textcolor(BROWN);cprintf("-");delay(20);}getch();
+getch();
+system_screen();
+ }
+ gotoxy(1,1);textcolor(BROWN);cprintf("---* SEARCH BY NAME *---");
+gotoxy(1,2);textcolor(WHITE);cprintf("________________________");
+
+ for(int f=4;f<=50;f++){textcolor(WHITE);gotoxy(75,f);cprintf("|");gotoxy(1,f);cprintf("|");}
+
+ gotoxy(3,6);textcolor(CYAN);cprintf("- ENTER MEDICINE NAME :");
+ gotoxy(2,8);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+ gotoxy(2,4);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(40,6);textcolor(BROWN);cscanf("%s",&pharname);gotoxy(55,6);textcolor(RED);cprintf("searching...");delay(600);gotoxy(55,6); printf("            ");
+ fread(&phar1,sizeof(phar1),1,fp);
+ while(!feof(fp))
+ {
+ if(strcmp(pharname,phar1.name)==0)
+ {
+printf("   \n\n\n Medicine-name   		         ");printf(":=========>   ");printf("[ %s ] \n\n",phar1.name);
+printf("      \n Medicine-ID                             ");printf(":=========>   ");printf("[ %d ] \n\n",phar1.id);
+printf("      \n Medicine-exp-date    [dd/mm/yy]         ");printf(":=========>   ");printf("[ %d",phar1.date1.ex_day);printf("/");printf("%d",phar1.date1.ex_mon);printf("/");printf("%d ]\n\n",phar1.date1.ex_yea);
+printf("      \n Medicine-prod-date   [dd/mm/yy]         ");printf(":=========>   ");printf("[ %d",phar1.date2.pr_day);printf("/");printf("%d",phar1.date2.pr_mon);printf("/");printf("%d ] \n\n",phar1.date2.pr_yea);
+printf("      \n Medicine-company		         ");printf(":=========>   ");printf("[ %s ]\n\n",phar1.company);                                                                                                                                                                                                                                                                                                                                                                  /*the line above the choice help*/
+printf("      \n Medicine-price 	                 ");printf(":=========>   ");printf("[ %s ] \n\n",phar1.cost);
+printf("     \n NOTE ABOUT MEDICINE :");puts(phar1.note);printf("\n--------------------------------------------------------------------------");delay(1000);flage==1;
+
+gotoxy(3,46);textcolor(LIGHTGRAY);cprintf("do you want to SEARCH again");
+textcolor(LIGHTRED);cprintf(" (Y)");textcolor(LIGHTGRAY);cprintf(" yes");
+textcolor(LIGHTRED);cprintf(" (N)");textcolor(LIGHTGRAY);cprintf(" No  ??");
+gotoxy(3,32);textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = RE-SEARCH");
+gotoxy(30,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO SYSTEM SCREEN");
+gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+gotoxy(2,44);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+char search2;gotoxy(50,46);scanf("%s",&search2);getch();
+
+ switch(search2)
+{
+case 'y':sbn();
+break;
+case 'n':system_screen();
+break;
+default:
+gotoxy(52,46);textcolor(RED);cprintf("# wrong choice # ");getch();system_screen();
+}
+}
+ fread(&phar1,sizeof(phar1),1,fp);
+ }
+ fclose(fp);
+ if(flage==0)
+ {
+
+ textcolor(WHITE);gotoxy(5,10);cprintf(" Not found!!...");
+ gotoxy(3,15);textcolor(LIGHTGRAY);cprintf("do you want to SEARCH again");
+ textcolor(LIGHTRED);cprintf(" (Y)");textcolor(LIGHTGRAY);cprintf(" yes");
+ textcolor(LIGHTRED);cprintf(" (N)");textcolor(LIGHTGRAY);cprintf(" No  ??");
+ gotoxy(3,32);textcolor(LIGHTRED);gotoxy(3,49);cprintf("(Y)");textcolor(WHITE);cprintf(" = RE-SEARCH");
+ gotoxy(30,49);textcolor(LIGHTRED);cprintf("(N)");textcolor(WHITE);cprintf(" = BACK TO SYSTEM SCREEN");
+ gotoxy(2,48);textcolor(WHITE);cprintf("-------------------------------------------------------------------------");
+ char sss1;gotoxy(5,18);scanf("%s",&sss1);getch();
+
+switch(sss1)
+{
+case 'y':sbn();
+break;
+case 'n':system_screen();
+break;
+default:
+gotoxy(5,22);textcolor(RED);cprintf("# You enter wrong choice ... # ");getch();system_screen();
+}}
+ getch();search();
+ }
+
+
+
+
+			   /* End of program */
+
+
+
